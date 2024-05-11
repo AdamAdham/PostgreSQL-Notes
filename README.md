@@ -47,7 +47,7 @@ stxname | stxkeys |   stxdependencies
 (1 row)
 ```
 
-## Link: https://www.citusdata.com/blog/2018/03/06/postgres-planner-and-its-usage-of-statistics/
+https://www.citusdata.com/blog/2018/03/06/postgres-planner-and-its-usage-of-statistics/
 
 ## Index
 
