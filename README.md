@@ -49,7 +49,19 @@ stxname | stxkeys |   stxdependencies
 
 ## Link: https://www.citusdata.com/blog/2018/03/06/postgres-planner-and-its-usage-of-statistics/
 
+## Index
 
+```SQL
+CREATE UNIQUE INDEX active_employee_per_department_idx ON employees (department) WHERE is_active = true;
+```
+
+A unique index with a WHERE clause combines the benefits of both an index and a unique constraint.
+
+Index: It acts like a regular index, facilitating faster data retrieval by organizing the data in a structured way. This helps in speeding up queries that involve the indexed columns.
+
+Unique Constraint: It enforces uniqueness on a subset of the data, similar to a unique constraint. This ensures data integrity by preventing duplicate values within the specified subset, as defined by the WHERE clause.
+
+By combining these features, a unique index with a WHERE clause provides the efficiency of indexing with the data integrity enforcement of a unique constraint, making it a powerful tool for optimizing performance while maintaining data consistency.
 
 
 ## Resources
