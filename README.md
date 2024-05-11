@@ -62,7 +62,7 @@ From the nd column:<br><br>
 "2, 5": This indicates the combination of city and state, which has 27,435 distinct values.
 "1, 2, 5": This indicates the combination of ZIP code, city, and state, which, as expected, has the same number of distinct values as the individual combinations of ZIP code and city (33,178).
 
-### MVC
+### MCV
 ```SQL
 CREATE STATISTICS stts3 (mcv) ON city, state FROM zipcodes;
 ```
@@ -91,6 +91,9 @@ index |         values         | nulls | frequency | base_frequency
    ...
 (99 rows)
 ```
+This indicates that the most common combination of city and state is Washington in DC, with actual frequency (in the sample) about 0.35%. The base frequency of the combination (as computed from the simple per-column frequencies) is only 0.0027%, resulting in two orders of magnitude under-estimates.<br>
+
+It's advisable to create MCV statistics objects only on combinations of columns that are actually used in conditions together, and for which misestimation of the number of groups is resulting in bad plans. Otherwise, the ANALYZE and planning cycles are just wasted.
 
 ## Check for dependecies
 ```SQL
