@@ -95,6 +95,7 @@ This indicates that the most common combination of city and state is Washington 
 
 It's advisable to create MCV statistics objects only on combinations of columns that are actually used in conditions together, and for which misestimation of the number of groups is resulting in bad plans. Otherwise, the ANALYZE and planning cycles are just wasted.
 
+https://www.postgresql.org/docs/15/planner-stats.html
 ## Check for dependecies
 ```SQL
 SELECT stxname, stxkeys, stxdependencies
