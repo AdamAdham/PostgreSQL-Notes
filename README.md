@@ -32,6 +32,12 @@ ANALYZE tbl;
 CREATE STATISTICS s2 (ndistinct) on col1, col2 from tbl;
 ANALYZE tbl;
 ```
+### Ndistinct
+```SQL
+CREATE STATISTICS stts2 (ndistinct) ON city, state, zip FROM zipcodes;
+```
+
+It's advisable to create ndistinct statistics objects only on combinations of columns that are actually used for grouping, and for which misestimation of the number of groups is resulting in bad plans. Otherwise, the ANALYZE cycles are just wasted.
 
 ## Check for dependecies
 ```SQL
