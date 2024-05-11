@@ -39,6 +39,29 @@ CREATE STATISTICS stts2 (ndistinct) ON city, state, zip FROM zipcodes;
 
 It's advisable to create ndistinct statistics objects only on combinations of columns that are actually used for grouping, and for which misestimation of the number of groups is resulting in bad plans. Otherwise, the ANALYZE cycles are just wasted.
 
+#### Query
+```SQL
+SELECT stxkeys AS k, stxdndistinct AS nd
+  FROM pg_statistic_ext join pg_statistic_ext_data on (oid = stxoid)
+  WHERE stxname = 'stts2';
+```
+#### Result
+```SQL
+-[ RECORD 1 ]------------------------------------------------------​--
+k  | 1 2 5
+nd | {"1, 2": 33178, "1, 5": 33178, "2, 5": 27435, "1, 2, 5": 33178}
+```
+Interpretation:
+
+k: This column represents the combinations of columns for which distinct values are being counted. The numbers represent the column identifiers. For example, "1" might represent the ZIP code, "2" might represent the city, and "5" might represent the state.
+nd: This column represents the distinct values observed for each combination of columns specified in k.
+From the nd column:
+
+"1, 2": This indicates the combination of ZIP code and city, which has 33,178 distinct values.
+"1, 5": This indicates the combination of ZIP code and state, which also has 33,178 distinct values.
+"2, 5": This indicates the combination of city and state, which has 27,435 distinct values.
+"1, 2, 5": This indicates the combination of ZIP code, city, and state, which, as expected, has the same number of distinct values as the individual combinations of ZIP code and city (33,178).
+
 ## Check for dependecies
 ```SQL
 SELECT stxname, stxkeys, stxdependencies
