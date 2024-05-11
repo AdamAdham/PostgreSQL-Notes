@@ -1,9 +1,8 @@
 # PostgreSQL-Notes
 
 ## Multiple Column Queries
-https://www.citusdata.com/blog/2018/03/06/postgres-planner-and-its-usage-of-statistics/
-
 When multiple conditions are supplied in the query, the planner assumes that the columns (or the where clause conditions) are independent of each other. This doesn’t hold true when columns are correlated or dependant on each other and that leads the planner to under or over-estimate the number of rows which will be returned by these conditions.
+https://www.citusdata.com/blog/2018/03/06/postgres-planner-and-its-usage-of-statistics/
 
 ## Query Time Taken
 ```SQL
