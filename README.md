@@ -53,9 +53,9 @@ nd | {"1, 2": 33178, "1, 5": 33178, "2, 5": 27435, "1, 2, 5": 33178}
 ```
 Interpretation:
 
-k: This column represents the combinations of columns for which distinct values are being counted. The numbers represent the column identifiers. For example, "1" might represent the ZIP code, "2" might represent the city, and "5" might represent the state.
-nd: This column represents the distinct values observed for each combination of columns specified in k.
-From the nd column:
+k: This column represents the combinations of columns for which distinct values are being counted. The numbers represent the column identifiers. **For example**, "1" might represent the ZIP code, "2" might represent the city, and "5" might represent the state.<br>
+nd: This column represents the distinct values observed for each combination of columns specified in k.<br>
+From the nd column:<br><br>
 
 "1, 2": This indicates the combination of ZIP code and city, which has 33,178 distinct values.
 "1, 5": This indicates the combination of ZIP code and state, which also has 33,178 distinct values.
