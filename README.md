@@ -182,7 +182,12 @@ Unique Constraint: It enforces uniqueness on a subset of the data, similar to a 
 
 By combining these features, a unique index with a WHERE clause provides the efficiency of indexing with the data integrity enforcement of a unique constraint, making it a powerful tool for optimizing performance while maintaining data consistency.
 
-Create Index: https://www.postgresql.org/docs/15/sql-createindex.html <br>
+### Create Index: 
+``` SQL
+CREATE INDEX idex_name ON table_name USING btree(column1, column2);
+```
+
+https://www.postgresql.org/docs/15/sql-createindex.html <br>
 Types : https://www.postgresql.org/docs/current/indexes-types.html
 
 ### Show indices of a schema
