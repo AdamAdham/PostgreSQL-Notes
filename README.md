@@ -40,6 +40,43 @@ Default value before manipulating is ON
 SET enable_seqscan TO off; --For all
 ```
 
+## Descripion of Each flag
+
+### 1. enable_indexscan
+**Function**: Enables or disables the use of index scans.
+**What It Enables/Disables**: Allows or prevents PostgreSQL from using B-tree, GiST, GIN, or other index types to scan for matching rows.
+**Use Case**: Turn this off to force PostgreSQL to use sequential scans instead of indexes, useful for testing the performance impact of indexes.
+
+### 2. enable_bitmapscan
+**Function**: Enables or disables the use of bitmap index scans.
+**What It Enables/Disables**: Allows or prevents PostgreSQL from using bitmap index scans, which create a bitmap of matching rows to be processed in batch.
+**Use Case**: Turn this off to see how a query performs without bitmap index scans, potentially identifying cases where sequential scans are more efficient. 
+
+### 3. enable_indexonlyscan
+**Function**: Enables or disables the use of index-only scans.
+**What It Enables/Disables**: Allows or prevents PostgreSQL from using index-only scans, where data is fetched directly from the index without accessing the main table.
+**Use Case**: Turn this off to test the impact of index-only scans, which can speed up read-only queries by reducing the need to access table data.
+
+### 4. enable_seqscan
+**Function**: Enables or disables the use of sequential scans.
+**What It Enables/Disables**: Allows or prevents PostgreSQL from scanning the entire table sequentially.
+**Use Case**: Turn this off to force PostgreSQL to use indexes instead of scanning the entire table, useful for testing index performance.
+
+### 5. enable_nestloop
+**Function**: Enables or disables the use of nested loop join algorithms.
+**What It Enables/Disables**: Allows or prevents PostgreSQL from using nested loop joins, which iterate through each row of the outer table and match it with rows from the inner table.
+**Use Case**: Turn this off to see how the planner performs without nested loop joins, which can be beneficial for small tables or queries with indexed join columns.
+
+### 6. enable_mergejoin
+**Function**: Enables or disables the use of merge join algorithms.
+**What It Enables/Disables**: Allows or prevents PostgreSQL from using merge joins, which require both tables to be sorted on the join key and then merge the sorted data.
+**Use Case**: Turn this off to force PostgreSQL to use other join methods, useful for testing the performance of merge joins on large, sorted datasets.
+
+### 7. enable_hashjoin
+**Function**: Enables or disables the use of hash join algorithms.
+**What It Enables/Disables**: Allows or prevents PostgreSQL from using hash joins, which build a hash table on the join key of one table and probe it with the other table.
+**Use Case**: Turn this off to test query performance without hash joins, which can be efficient for joining large tables with good hash distribution.
+
 ## Create Statistics
 ### Dependencies
 ```SQL
