@@ -129,6 +129,21 @@ By combining these features, a unique index with a WHERE clause provides the eff
 Create Index: https://www.postgresql.org/docs/15/sql-createindex.html <br>
 Types : https://www.postgresql.org/docs/current/indexes-types.html
 
+### B-Tree
+B-Tree on multiple columns:
+The multiple keys are all used together in the index:
+```
+     2,name2
+     |     |
+1,name4  3,name3
+```
+The comparison is made on the first key. Only in the case of ties, does the next key get used. So, if all the numbers were the same you would have:
+```
+     2,name2
+     |     |
+2,name3  2,name4
+```
+
 
 ## Resources
 - Introduction to SQL Queries performance measurement in PostgreSQL
