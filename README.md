@@ -185,6 +185,13 @@ By combining these features, a unique index with a WHERE clause provides the eff
 Create Index: https://www.postgresql.org/docs/15/sql-createindex.html <br>
 Types : https://www.postgresql.org/docs/current/indexes-types.html
 
+### Show indices of a schema
+``` SQL
+select *
+from pg_indexes
+where tablename = 'test'
+```
+
 ### B-Tree
 B-Tree on multiple columns:
 The multiple keys are all used together in the index:
