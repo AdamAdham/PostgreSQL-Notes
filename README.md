@@ -12,6 +12,25 @@ https://www.postgresql.org/docs/15/sql-explain.html (in description)
 ```SQL
 EXPLAIN ANALYZE SELECT * FROM tbl where col1 = 1;
 ```
+
+## Manipulating Query
+#### Showing the flags:
+``` SQL
+SHOW enable_indexscan;
+SHOW enable_bitmapscan;
+SHOW enable_indexonlyscan;
+SHOW enable_seqscan;
+SHOW enable_nestloop;
+SHOW enable_mergejoin;
+SHOW enable_hashjoin;
+```
+Default value before manipulating is ON
+
+#### Setting the flags:
+``` SQL
+SET enable_seqscan TO off; --For all
+```
+
 #### Result:
 ```SQL
 Seq Scan on tbl  (cost=0.00..169247.80 rows=9584 width=8) (actual time=0.641..622.851 rows=10000 loops=1)
