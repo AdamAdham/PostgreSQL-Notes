@@ -214,10 +214,15 @@ The comparison is made on the first key. Only in the case of ties, does the next
 
 ### GIN
 “The GIN index type was designed to deal with data types that are subdividable and you want to search for individual component values (array elements, lexemes in a text document, etc)” - Tom Lane <br>
+GIN indexes can seem like magic, as they can index what a normal B-tree cannot, such as JSONB data types and full text search.
 ```SQL
 CREATE INDEX name ON table USING gin(column);
 ```
-The column must be of tsvector type.
+The column must be of tsvector type. <br>
+tsvector
+``` SQL
+'quick':1 'brown':2 'fox':3 'jump':4 'over':5 'lazy':6 'dog':7
+```
 
 https://pganalyze.com/blog/gin-index <br>
 https://www.postgresql.org/docs/9.1/textsearch-indexes.html
