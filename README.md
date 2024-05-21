@@ -212,6 +212,9 @@ The comparison is made on the first key. Only in the case of ties, does the next
 2,name3  2,name4
 ```
 
+### GIN
+“The GIN index type was designed to deal with data types that are subdividable and you want to search for individual component values (array elements, lexemes in a text document, etc)” - Tom Lane
+
 
 ## Resources
 - Introduction to SQL Queries performance measurement in PostgreSQL
