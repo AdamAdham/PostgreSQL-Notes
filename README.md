@@ -213,8 +213,10 @@ The comparison is made on the first key. Only in the case of ties, does the next
 ```
 
 ### GIN
-“The GIN index type was designed to deal with data types that are subdividable and you want to search for individual component values (array elements, lexemes in a text document, etc)” - Tom Lane
+“The GIN index type was designed to deal with data types that are subdividable and you want to search for individual component values (array elements, lexemes in a text document, etc)” - Tom Lane <br>
+Oftentimes, our applications rely on sophisticated database features and data types, such as JSONB, array types or full text search in Postgres.A simple B-tree index does not work in such situations, for example to index a JSONB column. Instead, we need to look beyond, to GIN indexes. <br>
 
+https://pganalyze.com/blog/gin-index
 
 ## Resources
 - Introduction to SQL Queries performance measurement in PostgreSQL
